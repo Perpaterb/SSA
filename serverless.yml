@@ -1,15 +1,14 @@
 ---
-service: serverless-react-boilerplate
+service: serverless-portfolio
 frameworkVersion: "3"
 useDotenv: true
-variablesResolutionMode: 20210326
 disabledDeprecations:
   - CLI_OPTIONS_SCHEMA # some Serverless plugins haven't been updated yet and generate warnings
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  region: ${opt:region, 'us-east-1'}
+  runtime: nodejs14.x
+  region: ${opt:region, 'ap-southeast-2'}
   stage: ${opt:stage, 'dev'}
   memorySize: 512
   timeout: 6
