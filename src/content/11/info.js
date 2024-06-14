@@ -1,1 +1,0 @@
-["3D Printed Christmas Star Lights", "Blog"]
