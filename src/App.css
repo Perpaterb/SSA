@@ -6,8 +6,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-  background-image: url('./img/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;

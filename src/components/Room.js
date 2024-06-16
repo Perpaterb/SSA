@@ -27,7 +27,7 @@ const Room = ({ setStage, setRoomCode, userID }) => {
             return;
           }
 
-          const updatedLog = [...roomData.log, { userID, selectedPlayer: '', diceRolls: [], lastAction: Date.now() }];
+          const updatedLog = [...roomData.log, { userID, selectedPlayer: '', diceRolls: [], lastAction: Date.now(), score: 100 }];
           await updateDoc(roomDocRef, { log: updatedLog });
           setStage('selectPlayer');
         }
