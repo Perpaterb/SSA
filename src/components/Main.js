@@ -3,7 +3,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../database/firebaseConfig';
 import Room from './Room';
 import PlayerSelection from './PlayerSelection';
-import Board from './Board';
+import Table from './Table';
 
 const Main = () => {
   const [stage, setStage] = useState('enterRoom');
@@ -54,7 +54,7 @@ const Main = () => {
         />
       )}
       {stage === 'board' && (
-        <Board 
+        <Table 
           roomCode={roomCode} 
           userID={userID} 
         />

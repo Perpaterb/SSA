@@ -31,19 +31,29 @@ const PlayerSelection = ({ setStage, roomCode, userID }) => {
 
   const handleSelect = async (index) => {
     const selectedPlayer = shuffledPlayers[index];
-
+  
     // Update the selectedPlayer in the database
     try {
       const roomDocRef = doc(db, 'gameData', roomCode);
       const roomDoc = await getDoc(roomDocRef);
-
+  
       if (roomDoc.exists()) {
         const roomData = roomDoc.data();
+  
+        // Check if the selected player's name has already been taken
+        const takenNames = roomData.log.map(logEntry => logEntry.selectedPlayer);
+        if (takenNames.includes(selectedPlayer.name)) {
+          // If the selected player's name has been taken, select a random player from the list of players whose names have not been taken
+          const availablePlayers = shuffledPlayers.filter(player => !takenNames.includes(player.name));
+          const randomIndex = Math.floor(Math.random() * availablePlayers.length);
+          selectedPlayer = availablePlayers[randomIndex];
+        }
+  
         const updatedLog = roomData.log.map(logEntry =>
           logEntry.userID === userID ? { ...logEntry, selectedPlayer: selectedPlayer.name, lastAction: Date.now() } : logEntry
         );
         await updateDoc(roomDocRef, { log: updatedLog });
-
+  
         setStage('board');
       }
     } catch (error) {
@@ -51,6 +61,7 @@ const PlayerSelection = ({ setStage, roomCode, userID }) => {
       alert('An error occurred while updating the player selection. Please try again.');
     }
   };
+  
 
   return (
     <div>

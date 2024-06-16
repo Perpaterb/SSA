@@ -8,7 +8,8 @@ const Admin = () => {
   const [openRooms, setOpenRooms] = useState([]);
   const [activeRooms, setActiveRooms] = useState([]);
   const [completedRooms, setCompletedRooms] = useState([]);
-  const [newRoomMaxPlayers, setNewRoomMaxPlayers] = useState('');
+  const [newRoomMaxPlayers, setNewRoomMaxPlayers] = useState(4);
+
 
   useEffect(() => {
     if (!localStorage.getItem('userID')) {
@@ -130,12 +131,11 @@ const Admin = () => {
       </ul>
 
       <h2>Create New Room</h2>
-      <input
-        type="number"
-        value={newRoomMaxPlayers}
-        onChange={e => setNewRoomMaxPlayers(e.target.value)}
-        placeholder="Max Players"
-      />
+        <div>
+          <span>Number of players : {newRoomMaxPlayers}  </span>
+          <button onClick={() => setNewRoomMaxPlayers(Math.max(newRoomMaxPlayers - 1, 1))}>-</button>
+          <button onClick={() => setNewRoomMaxPlayers(Math.min(newRoomMaxPlayers + 1, 8))}>+</button>
+        </div>
       <button onClick={handleCreateRoom}>Create Room</button>
 
       <h2>Active Rooms</h2>
