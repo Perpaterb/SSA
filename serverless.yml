@@ -1,5 +1,5 @@
 ---
-service: serverless-portfolio
+service: Game1
 frameworkVersion: "3"
 useDotenv: true
 disabledDeprecations:

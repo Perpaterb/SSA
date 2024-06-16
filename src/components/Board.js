@@ -50,32 +50,34 @@ const Board = ({ roomData , roomCode}) => {
         let isUpdated = false; // flag to check if there's an update
       
         roomData.log.forEach((logEntry, player) => {
+            // Start from the last processed dice roll
             for (let round = turnCounter[player]; round < logEntry.diceRolls.length; round++) {
-                let totalDiceRolls = logEntry.diceRolls.reduce((a, b) => a + b, 0);
-                newPositions[player] = totalDiceRolls % boardData.length;
+                let diceRoll = logEntry.diceRolls[round];
+                newPositions[player] = (newPositions[player] + diceRoll) % boardData.length;
                 switch (boardData[newPositions[player]].modifier) {
                     case 'plus':
-                    newScores[player] = Math.round(newScores[player] + boardData[newPositions[player]].amount);
-                    break;
+                        newScores[player] = Math.round(newScores[player] + boardData[newPositions[player]].amount);
+                        break;
                     case 'subtract':
-                    newScores[player] = Math.round(newScores[player] - boardData[newPositions[player]].amount);
-                    if (newScores[player] < 0) newScores[player] = 0; // Add this line
-                    break;
+                        newScores[player] = Math.round(newScores[player] - boardData[newPositions[player]].amount);
+                        if (newScores[player] < 0) newScores[player] = 0;
+                        break;
                     case 'multiply':
-                    newScores[player] = Math.round(newScores[player] * boardData[newPositions[player]].amount);
-                    if (newScores[player] < 0) newScores[player] = 0; // Add this line
-                    break;
+                        newScores[player] = Math.round(newScores[player] * boardData[newPositions[player]].amount);
+                        if (newScores[player] < 0) newScores[player] = 0;
+                        break;
                     case 'divide':
-                    newScores[player] = Math.round(newScores[player] / boardData[newPositions[player]].amount);
-                    if (newScores[player] < 0) newScores[player] = 0; // Add this line
-                    break;
+                        newScores[player] = Math.round(newScores[player] / boardData[newPositions[player]].amount);
+                        if (newScores[player] < 0) newScores[player] = 0;
+                        break;
                     default:
-                    break;
+                        break;
                 }
-                newTurnCounter[player]++;
-                isUpdated = true; // set the flag to true if there's an update
+                newTurnCounter[player]++; // Increment the turn counter for the player
+                isUpdated = true;
             }
         });
+        
           
       
         setPositions(newPositions);
