@@ -7,7 +7,7 @@ disabledDeprecations:
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   region: ${opt:region, 'ap-southeast-2'}
   stage: ${opt:stage, 'dev'}
   memorySize: 512
@@ -22,6 +22,14 @@ provider:
     SERVERLESS_PROJECT: ${self:service}
     SERVERLESS_REGION: ${self:provider.region}
     SERVERLESS_STAGE: ${self:provider.stage}
+
+    REACT_APP_FIREBASE_API_KEY: ${env:REACT_APP_FIREBASE_API_KEY}
+    REACT_APP_FIREBASE_AUTH_DOMAIN: ${env:REACT_APP_FIREBASE_AUTH_DOMAIN}
+    REACT_APP_FIREBASE_PROJECT_ID: ${env:REACT_APP_FIREBASE_PROJECT_ID}
+    REACT_APP_FIREBASE_STORAGE_BUCKET: ${env:REACT_APP_FIREBASE_STORAGE_BUCKET}
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${env:REACT_APP_FIREBASE_MESSAGING_SENDER_ID}
+    REACT_APP_FIREBASE_APP_ID: ${env:REACT_APP_FIREBASE_APP_ID}
+    REACT_APP_FIREBASE_MEASUREMENT_ID: ${env:REACT_APP_FIREBASE_MEASUREMENT_ID}
 
     APP_DIST_URL: ${self:custom.distBucketUrl.${self:provider.region}, self:custom.distBucketUrl.default}
     APP_PUBLIC_URL: ${self:custom.distBucketUrl.${self:provider.region}, self:custom.distBucketUrl.default}
