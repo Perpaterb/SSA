@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
+import Canvas from './components/Canvas';
+import Stage1 from './components/Stage1';
 
-import Routing from "./components/Routing"
 
 export default function App() {
 
   return (
     <div>
-      <Routing/>
+      <Canvas/>
     </div>
   );
 }

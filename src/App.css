@@ -10,34 +10,147 @@ body {
   background-attachment: fixed;
   background-position: bottom;
   touch-action: none;
-
-  
+  background: #dde1e7;  
 }
 
+
+.notPressedBox{
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  border-radius: 10px;
+  pointer-events: auto;
+  }
+
+  .degreeNotPressedBox{
+    background: #dde1e7;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    border-radius: 10px;
+    pointer-events: auto;
+  }
+
+.PressedButton{
+  background: linear-gradient(60deg, rgba(149,0,198,1) 0%, rgba(9,121,116,1) 29%, rgba(0,255,46,1) 100%);
+  }
+
+.notPressedButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px; /* Position at the bottom of the DraggableBox */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust horizontal centering */
+}
+
+.pressedButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #00FFFF;
+  box-shadow: -5px -5px 9px rgba(202, 202, 202, 0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  filter: drop-shadow(0 0 1px #00ffffab) drop-shadow(0 0 3px #00ffffc9);
+  animation: blink 5s infinite;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px; /* Position at the bottom of the DraggableBox */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust horizontal centering */
+}
+  
+.colourFull{
+  background: linear-gradient(60deg, rgba(149,0,198,1) 0%, rgba(9,121,116,1) 29%, rgba(0,255,46,1) 100%);
+  animation: blink 5s infinite;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.Main {
-  text-align: center;
+.line-state-1 {
+  stroke: black; /* Neon blue color */
+  stroke-width: 2;
+  /* Adding glow effect */
+  filter: drop-shadow(0 0 5px #ffc400) drop-shadow(0 0 10px #ffc400);
+  animation: blink 5s infinite;
 }
 
-.player-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.line-state-2 {
+  stroke: #00FFFF; /* Neon blue color */
+  stroke-width: 8;
+  /* Adding glow effect */
+  filter: drop-shadow(0 0 5px #00FFFF) drop-shadow(0 0 10px #00FFFF) drop-shadow(0 0 15px #00FFFF);
+  animation: blink 5s infinite;
 }
 
-.player-card {
-  width: 100px;
-  padding: 10px;
-  margin: 5px;
+.line-state-3 {
+  stroke: #00FFFF; /* Neon blue color */
+  stroke-width: 8;
+  /* Adding glow effect */
+  filter: drop-shadow(0 0 5px #ffc400) drop-shadow(0 0 10px #00FFFF) drop-shadow(0 0 15px #00FFFF);
+  animation: blink 5s infinite;
+}
+
+.line-state-0 {
+  stroke: black;
+  stroke-width: 2;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.5;
+  }
+}
+
+.popupInfo {
+  position: absolute;
+  bottom: 100%; /* Position the popup above the box */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
   border: 1px solid #ccc;
-  cursor: pointer;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it appears above other elements */
+  white-space: nowrap;
+  border-radius: 10px;
+  font: 1.5em sans-serif;
 }
 
-.player-card:hover {
-  border-color: blue;
+.showPopup {
+  display: block;
+}
+
+.boxtext {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  margin-top: 12%;
+  font: 1.5em sans-serif;
+}
+
+.degreeBoxtext {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5%;
+  font: 1.5em sans-serif;
+}
+
+.cptext {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5%;
+  font: 1.5em sans-serif;
 }
