@@ -76,6 +76,9 @@ const DegreeBox = forwardRef(({ id, initialPosition, boxtext, cpNeeded, boxPopup
 
   const handleMouseDown = (e) => {
     e.preventDefault();
+    if (e.button === 2) {
+      return;
+    }
     const containerRect = containerRef.current.getBoundingClientRect();
     setOffsetX(e.clientX - containerRect.left);
     setOffsetY(e.clientY - containerRect.top);

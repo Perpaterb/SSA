@@ -46,6 +46,7 @@ const Stage1 = ({ scale, position }) => {
 
   return (
     <div>
+      
       {degreeBoxInfo.map((degreeBox, degreeIndex) =>
         degreeBox.countedSubjects.map((subjectNumber, subjectIndex) => {
           const subjectIndexRef = subjectBoxInfo.findIndex(subject => subject.number === subjectNumber);
@@ -79,7 +80,7 @@ const Stage1 = ({ scale, position }) => {
           );
         })
       )}
-
+      
       {subjectBoxInfo.map((a, index) => (
         <SubjectDraggableBox
           key={index}
@@ -115,6 +116,7 @@ const Stage1 = ({ scale, position }) => {
           canvasPosition={position}
         />
       ))}
+      
     </div>
   );
 };

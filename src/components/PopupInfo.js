@@ -10,7 +10,6 @@ const PopupInfo = ({ text }) => {
             width: {width},
             height: {height},
             top: {height} + 60,
-            left: {width} / 2,
             cursor: 'pointer',
             touchAction: 'none',
             backgroundColor: "#ffffff"

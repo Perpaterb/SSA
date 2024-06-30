@@ -1,5 +1,4 @@
 body {
-  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,9 +9,8 @@ body {
   background-attachment: fixed;
   background-position: bottom;
   touch-action: none;
-  background: #dde1e7;  
+  background: #dde1e7;
 }
-
 
 .notPressedBox{
   background: #dde1e7;
