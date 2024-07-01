@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Outline from './Outline';
+import PoeStart from './PoeStart';
 
-const InteractiveLineDrawer = () => {
+const InteractiveLineDrawer = ({onLineCreate}) => {
   const [isActive, setIsActive] = useState(false);
   const [points, setPoints] = useState([]);
   const [linePath, setLinePath] = useState('');
@@ -68,7 +69,8 @@ const InteractiveLineDrawer = () => {
 
   return (
     <div>
-        <Outline/>
+      <Outline/>
+      <PoeStart/>
       <svg
         ref={svgRef}
         onClick={handleClick}

@@ -20,8 +20,9 @@ const Canvas = () => {
             const mouseY = (event.clientY - rect.top - position.y) / scale;
 
             setScale(prevScale => {
-                const newScale = Math.min(Math.max(0.01, prevScale + (event.deltaY * -0.0005)), 0.7);
-                const scaleRatio = newScale / prevScale;
+                // Dynamically adjust the zoom sensitivity based on the current scal
+                const sensitivity = 0.001 * Math.pow(prevScale, 1.5);
+                const newScale = Math.min(Math.max(0.01, prevScale + (event.deltaY * -sensitivity)), 2);
 
                 // Adjust the position to zoom in/out around the mouse position
                 setPosition(prevPosition => ({
@@ -88,7 +89,7 @@ const Canvas = () => {
                 height: '100vh',
                 overflow: 'hidden',
                 position: 'relative',
-                cursor: dragging ? 'grabbing' : 'grab',
+                cursor: dragging ? 'grabbing' : 'auto',
                 userSelect: 'none',
             }}
         >
