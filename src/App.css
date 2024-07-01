@@ -1,5 +1,4 @@
 body {
-  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,9 +9,8 @@ body {
   background-attachment: fixed;
   background-position: bottom;
   touch-action: none;
-  background: #dde1e7;  
+  background: #dde1e7;
 }
-
 
 .notPressedBox{
   background: #dde1e7;
@@ -21,12 +19,12 @@ body {
   pointer-events: auto;
   }
 
-  .degreeNotPressedBox{
-    background: #dde1e7;
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-    border-radius: 10px;
-    pointer-events: auto;
-  }
+.degreeNotPressedBox{
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  border-radius: 10px;
+  pointer-events: auto;
+}
 
 .PressedButton{
   background: linear-gradient(60deg, rgba(149,0,198,1) 0%, rgba(9,121,116,1) 29%, rgba(0,255,46,1) 100%);
@@ -153,4 +151,14 @@ code {
   justify-content: center;
   margin-top: 5%;
   font: 1.5em sans-serif;
+}
+
+.startCircle{
+  width: 400px;
+  height: 400px; 
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 9800px;
+  left: 9800px;
 }

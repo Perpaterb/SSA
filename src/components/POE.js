@@ -4,33 +4,31 @@ import SubjectDraggableBox from './SubjectDraggableBox';
 import DegreeBox from './DegreeBox'; 
 import Line from './Line';
 
-const Stage1 = ({ scale, position }) => {
+const POE = () => {
   const [buttonStates, setButtonStates] = useState({});
 
-  const handleButtonToggle = (subjectNumber) => {
-    setButtonStates((prevState) => ({
-      ...prevState,
-      [subjectNumber]: !prevState[subjectNumber],
-    }));
-  }
-
   const subjectBoxInfo = [
-    { number: 123456, initpos: { y: 130, x: 400 }, cp: 6, prerequisites: [], text: "123456 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 234567, initpos: { y: 330, x: 400 }, cp: 6, prerequisites: [], text: "234567 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 345678, initpos: { y: 530, x: 400 }, cp: 6, prerequisites: [], text: "345678 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 456789, initpos: { y: 730, x: 400 }, cp: 6, prerequisites: [], text: "456789 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 321654, initpos: { y: 130, x: 1000 }, cp: 6, prerequisites: [], text: "321654 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 987654, initpos: { y: 330, x: 1000 }, cp: 6, prerequisites: [123456, 234567], text: "987654 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 654987, initpos: { y: 530, x: 1000 }, cp: 6, prerequisites: [], text: "654987 Subject Name1. 6cp This subject is all about doing stuff" },
-    { number: 456123, initpos: { y: 730, x: 1000 }, cp: 6, prerequisites: [123456, 345678], text: "456123 Subject Name1. 6cp This subject is all about doing stuff" }
+    { number: 123456, pos: { y: 130, x: 400 }, cp: 6, prerequisites: [], text: "123456 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 234567, pos: { y: 330, x: 400 }, cp: 6, prerequisites: [], text: "234567 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 345678, pos: { y: 530, x: 400 }, cp: 6, prerequisites: [], text: "345678 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 456789, pos: { y: 730, x: 400 }, cp: 6, prerequisites: [], text: "456789 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 321654, pos: { y: 130, x: 1000 }, cp: 6, prerequisites: [], text: "321654 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 987654, pos: { y: 330, x: 1000 }, cp: 6, prerequisites: [123456, 234567], text: "987654 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 654987, pos: { y: 530, x: 1000 }, cp: 6, prerequisites: [], text: "654987 Subject Name1. 6cp This subject is all about doing stuff" },
+    { number: 456123, pos: { y: 730, x: 1000 }, cp: 6, prerequisites: [123456, 345678], text: "456123 Subject Name1. 6cp This subject is all about doing stuff" }
   ];
 
   const degreeBoxInfo = [
-    { number: 12345, initpos: { y: 130, x: 1300 }, cpNeeded: 30, text: "Bachelor of Computing Science", countedSubjects: [123456, 234567, 345678, 456789, 987654, 654987] },
-    { number: 34567, initpos: { y: 330, x: 1300 }, cpNeeded: 30, text: "Bachelor of Information Systems", countedSubjects: [123456, 234567, 345678, 456789, 987654, 654987] },
-    { number: 23456, initpos: { y: 530, x: 1300 }, cpNeeded: 30, text: "Bachelor of Information Technology", countedSubjects: [123456, 234567, 345678, 321654, 987654, 654987, 456123] },
+    { number: 12345, pos: { y: 130, x: 1300 }, cpNeeded: 30, text: "Bachelor of Computing Science", countedSubjects: [123456, 234567, 345678, 456789, 987654, 654987] },
+    { number: 34567, pos: { y: 330, x: 1300 }, cpNeeded: 30, text: "Bachelor of Information Systems", countedSubjects: [123456, 234567, 345678, 456789, 987654, 654987] },
+    { number: 23456, pos: { y: 530, x: 1300 }, cpNeeded: 30, text: "Bachelor of Information Technology", countedSubjects: [123456, 234567, 345678, 321654, 987654, 654987, 456123] },
   ];
 
+  const lineInfo = [
+    {pos: "M 10036 9799 C 10136 9799, 10192 9415, 10092 9415", conection: 0},
+    {pos: "M 9952 9834 C 10052 9834, 9852 9398, 9752 9398", conection: 0},
+    {pos: "M 9992 9887 C 10092 9887, 10643 9577, 10543 9577", conection: 0},
+  ];
 
 
   const subjectBoxRefs = useRef(subjectBoxInfo.map(() => React.createRef()));
@@ -121,4 +119,4 @@ const Stage1 = ({ scale, position }) => {
   );
 };
 
-export default Stage1;
+export default POE;
