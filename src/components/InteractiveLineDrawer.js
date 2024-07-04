@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Outline from './Outline';
 import PoeStart from './PoeStart';
+import POE from './POE';
 
 const InteractiveLineDrawer = ({onLineCreate}) => {
+  const poeRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [points, setPoints] = useState([]);
   const [linePath, setLinePath] = useState('');
@@ -15,6 +17,10 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
   const svgRef = useRef(null);
 
   const handleClick = (e) => {
+    if (poeRef.current) {
+      poeRef.current.querySelector('button').click();
+      console.log("click")
+    }
     if (e.ctrlKey && e.altKey) {
       const svg = svgRef.current;
       const point = svg.createSVGPoint();
@@ -29,6 +35,7 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
         setPoints([{ x: Math.round(svgPoint.x), y: Math.round(svgPoint.y) }]);
         setIsActive(true);
       }
+      
     }
   };
 
@@ -69,8 +76,6 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
 
   return (
     <div>
-      <Outline/>
-      <PoeStart/>
       <svg
         ref={svgRef}
         onClick={handleClick}

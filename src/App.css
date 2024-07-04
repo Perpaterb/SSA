@@ -162,3 +162,147 @@ code {
   top: 9800px;
   left: 9800px;
 }
+
+.poe-container {
+  position: absolute;
+}
+
+.poe-subject-box {
+  position: absolute;
+  width: 100px;  /* Adjust if necessary */
+  height: 100px; /* Adjust if necessary */
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+/* Image styles */
+.poe-button-img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
+}
+
+/* SVG styles */
+.poe-subject-box svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.poe-subject-box.state-0 svg circle {
+  stroke: grey;
+  stroke-width: 0;
+  fill: none;
+}
+
+.poe-subject-box.state-1 svg circle {
+  stroke: rgb(0, 255, 98);
+  stroke-width: 3;
+  fill: none;
+  filter: drop-shadow(0 0 10px rgb(43, 255, 0)) drop-shadow(0 0 5px #ffc400);
+}
+
+.poe-subject-box.state-2 svg circle {
+  stroke: gold;
+  stroke-width: 3;
+  fill: none;
+  filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 5px #ffc400);
+}
+
+.button-text {
+  position: relative;
+  margin-top: 43%;
+  z-index: 3; /* Ensure text is on top */
+  font: 1em sans-serif;
+}
+
+.poe-degree-box {
+  position: absolute;
+  width: 150px;  /* 1.5 times the original 150px */
+  height: 150px; /* 1.5 times the original 150px */
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+/* Image styles for PoeDegreeBox */
+.poe-degree-img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
+}
+
+/* SVG styles for PoeDegreeBox */
+.poe-degree-box svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.poe-degree-box.state-0 svg circle {
+  stroke: grey;
+  stroke-width: 0;
+  fill: none;
+}
+
+.poe-degree-box.state-1 svg circle {
+  stroke: rgb(157, 255, 0);
+  stroke-width: 3;
+  fill: none;
+  filter: drop-shadow(0 0 5px rgb(137, 219, 6)) drop-shadow(0 0 3px #ffc400);
+}
+
+.poe-degree-box.state-2 svg circle {
+  stroke: gold;
+  stroke-width: 3;
+  fill: none;
+  filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 3px #ffc400);
+}
+
+.degree-text {
+  position: relative;
+  font: 1.7em sans-serif;
+  margin-top: 30%;
+  z-index: 3; /* Ensure text is on top */
+}
+
+.degree-cp-count {
+  position: relative;
+  font: 1.5em sans-serif;
+  z-index: 3; /* Ensure text is on top */
+}
+
+.poe-line {
+  stroke: black;
+  stroke-width: 2;
+  fill: none;
+}
+
+.poe-line.state-0-0 {
+  /* Styles for line state [0, 0] */
+}
+
+.poe-line.state-0-1 {
+  /* Styles for line state [0, 1] */
+}
+
+.poe-line.state-1-0 {
+  /* Styles for line state [1, 0] */
+}
+
+.poe-line.state-1-1 {
+  /* Styles for line state [1, 1] */
+}

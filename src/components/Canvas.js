@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Stage1 from './Stage1';
 import InteractiveLineDrawer from './InteractiveLineDrawer';
+import Outline from './Outline';
+import PoeStart from './PoeStart';
+import POE from './POE';
 
 const Canvas = () => {
     const canvasRef = useRef(null);
@@ -9,7 +12,13 @@ const Canvas = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
     const requestRef = useRef(null);
+    const [isButtonInteractiveLineDrawerVisible, setIsButtonInteractiveLineDrawerVisible] = useState(false);
 
+    const toggleButtonInteractiveLineDrawerVisibility = () => {
+        setIsButtonInteractiveLineDrawerVisible(prevState => !prevState);
+    };
+    
+    
     useEffect(() => {
         const handleWheel = (event) => {
             event.preventDefault();
@@ -22,7 +31,7 @@ const Canvas = () => {
             setScale(prevScale => {
                 // Dynamically adjust the zoom sensitivity based on the current scal
                 const sensitivity = 0.001 * Math.pow(prevScale, 1.5);
-                const newScale = Math.min(Math.max(0.01, prevScale + (event.deltaY * -sensitivity)), 2);
+                const newScale = Math.min(Math.max(0.01, prevScale + (event.deltaY * -sensitivity)), 4);
 
                 // Adjust the position to zoom in/out around the mouse position
                 setPosition(prevPosition => ({
@@ -121,7 +130,23 @@ const Canvas = () => {
                     boxSizing: 'content-box',
                     position: 'relative',
                 }}>
-                    <InteractiveLineDrawer/>
+                    <Outline/>
+                    <PoeStart/>
+                    <POE/>
+                    {isButtonInteractiveLineDrawerVisible && (<InteractiveLineDrawer/>)}
+                </div>
+                <div style={{
+                    width: 'calc(200px + 20px)', // Add borders
+                    height: 'calc(200px + 20px)', // Add borders
+                    border: '1px solid black',
+                    boxSizing: 'content-box',
+                    position: 'relative',
+                }}>
+                    <button style={{
+                        width: 220,
+                        height: 220,
+                        }}
+                        onClick={toggleButtonInteractiveLineDrawerVisibility}> {isButtonInteractiveLineDrawerVisible ? 'Hide' : 'Show '} </button>
                 </div>
                            
             </div>
