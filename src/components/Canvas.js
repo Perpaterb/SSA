@@ -131,8 +131,9 @@ const Canvas = () => {
                     position: 'relative',
                 }}>
                     <Outline/>
-                    <PoeStart/>
+            
                     <POE/>
+                    <PoeStart/>
                     {isButtonInteractiveLineDrawerVisible && (<InteractiveLineDrawer/>)}
                 </div>
                 <div style={{

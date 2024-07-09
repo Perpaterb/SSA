@@ -3,7 +3,7 @@ import Outline from './Outline';
 import PoeStart from './PoeStart';
 import POE from './POE';
 
-const InteractiveLineDrawer = ({onLineCreate}) => {
+const InteractiveLineDrawer = ({ onLineCreate }) => {
   const poeRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const [points, setPoints] = useState([]);
@@ -35,7 +35,6 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
         setPoints([{ x: Math.round(svgPoint.x), y: Math.round(svgPoint.y) }]);
         setIsActive(true);
       }
-      
     }
   };
 
@@ -74,6 +73,11 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
     onLineCreate && onLineCreate(linePath);
   };
 
+  const handleLengthChange = (setter, value) => {
+    const length = Math.max(50, Math.round(parseFloat(value)));
+    setter(length);
+  };
+
   return (
     <div>
       <svg
@@ -89,59 +93,57 @@ const InteractiveLineDrawer = ({onLineCreate}) => {
         />
       </svg>
       {points.length === 2 && (
-        <>
-          <div
-            style={{
-              position: 'absolute',
-              top: points[0].y - controlPanelInitialHeight - controlPanelOffset,
-              left: points[0].x,
-              backgroundColor: 'white',
-              padding: '10px',
-            }}
-          >
-            <label>
-              Angle A: 
-              <input 
-                type="number" 
-                value={angleA} 
-                onChange={(e) => setAngleA(Math.round(parseFloat(e.target.value)))} 
-              />
-            </label>
-            <label>
-              Length A: 
-              <input 
-                type="number" 
-                value={lengthA} 
-                onChange={(e) => setLengthA(Math.round(parseFloat(e.target.value)))} 
-              />
-            </label>
-            <label>
-              Angle B: 
-              <input 
-                type="number" 
-                value={angleB} 
-                onChange={(e) => setAngleB(Math.round(parseFloat(e.target.value)))} 
-              />
-            </label>
-            <label>
-              Length B: 
-              <input 
-                type="number" 
-                value={lengthB} 
-                onChange={(e) => setLengthB(Math.round(parseFloat(e.target.value)))} 
-              />
-            </label>
-            <label>
-              Control Panel Offset:
-              <input 
-                type="number" 
-                value={controlPanelOffset} 
-                onChange={(e) => setControlPanelOffset(Math.round(parseFloat(e.target.value)))} 
-              />
-            </label>
-            <button onClick={handleDone}>Done</button>
-          </div>
-        </>
+        <div
+          style={{
+            position: 'absolute',
+            top: points[0].y - controlPanelInitialHeight - controlPanelOffset,
+            left: points[0].x,
+            backgroundColor: 'white',
+            padding: '10px',
+          }}
+        >
+          <label>
+            Angle A: 
+            <input 
+              type="number" 
+              value={angleA} 
+              onChange={(e) => setAngleA(Math.round(parseFloat(e.target.value)))} 
+            />
+          </label>
+          <label>
+            Length A: 
+            <input 
+              type="number" 
+              value={lengthA} 
+              onChange={(e) => handleLengthChange(setLengthA, e.target.value)}
+            />
+          </label>
+          <label>
+            Angle B: 
+            <input 
+              type="number" 
+              value={angleB} 
+              onChange={(e) => setAngleB(Math.round(parseFloat(e.target.value)))} 
+            />
+          </label>
+          <label>
+            Length B: 
+            <input 
+              type="number" 
+              value={lengthB} 
+              onChange={(e) => handleLengthChange(setLengthB, e.target.value)}
+            />
+          </label>
+          <label>
+            Control Panel Offset:
+            <input 
+              type="number" 
+              value={controlPanelOffset} 
+              onChange={(e) => setControlPanelOffset(Math.round(parseFloat(e.target.value)))}
+            />
+          </label>
+          <button onClick={handleDone}>Done</button>
+        </div>
       )}
     </div>
   );
@@ -151,4 +153,3 @@ export default InteractiveLineDrawer;
 
 // Usage example (in another component/file):
 // <InteractiveLineDrawer onLineCreate={(path) => console.log(path)} />
-
