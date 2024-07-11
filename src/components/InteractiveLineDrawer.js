@@ -84,11 +84,11 @@ const InteractiveLineDrawer = ({ onLineCreate }) => {
         ref={svgRef}
         onClick={handleClick}
         onMouseMove={handleMouseMove}
-        style={{ position: 'absolute', width: '100%', height: '100%', border: '1px solid #000' }}
+        style={{ position: 'absolute', width: '100%', height: '100%', border: '1px solid #000', zIndex: 3 }}
       >
         <path
           d={linePath}
-          stroke="black"
+          stroke="red"
           fill="none"
         />
       </svg>
@@ -100,6 +100,7 @@ const InteractiveLineDrawer = ({ onLineCreate }) => {
             left: points[0].x,
             backgroundColor: 'white',
             padding: '10px',
+            zIndex: 4
           }}
         >
           <label>

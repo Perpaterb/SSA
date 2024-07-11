@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-const PoeLine = ({ position, connections }) => {
+const PoeLine = ({ position, connections, ends }) => {
   const [state, setState] = useState([0, 0]);
   const [pathPoints, setPathPoints] = useState(null);
   const moveDistance = 4; // Distance to move the short lines
@@ -9,7 +9,10 @@ const PoeLine = ({ position, connections }) => {
   const svgRef = useRef(null);
 
   const updateState = () => {
-    if (connections.from.length > 0) {
+    if (connections.from.length === 0 && connections.to.length === 0) {
+      // Set default state 1-0 when there are no connections
+      setState([1, 0]);
+    } else if (connections.from.length > 0) {
       const inConnection = connections.from.some(ref => ref.current?.classList.contains('state-1')) ? 1 : 0;
       const outConnection = connections.to.some(ref => ref.current?.classList.contains('state-2')) ? 1 : 0;
       setState([inConnection, outConnection]);
@@ -35,6 +38,7 @@ const PoeLine = ({ position, connections }) => {
 
       setPathPoints(getPathPoints(position));
     }
+
   }, [position]);
 
   const extractControlPoints = (d) => {
@@ -93,43 +97,29 @@ const PoeLine = ({ position, connections }) => {
   let shortLineStartPoint = movePoint(startPoint, startToFirstControlDirection, moveDistance);
   let shortLineEndStartPoint = movePoint(endPoint, endToSecondControlDirection, moveDistance);
 
-
   return (
     <svg ref={svgRef}>
-      {/* Start hole at the end of blue line */}
-      <circle
-        cx={shortLineStartPoint.x}
-        cy={shortLineStartPoint.y}
-        r={holeDiameter / 2}
-        fill={holeColor}
-      />
+      {/* Conditionally render holes at the specified ends */}
+      {ends[0] === 1 && (
+        <circle
+          cx={shortLineStartPoint.x}
+          cy={shortLineStartPoint.y}
+          r={holeDiameter / 2}
+          fill={holeColor}
+        />
+      )}
 
-      {/* End hole at the end of red line */}
-      <circle
-        cx={shortLineEndStartPoint.x}
-        cy={shortLineEndStartPoint.y}
-        r={holeDiameter / 2}
-        fill={holeColor}
-      />
-      
+      {ends[1] === 1 && (
+        <circle
+          cx={shortLineEndStartPoint.x}
+          cy={shortLineEndStartPoint.y}
+          r={holeDiameter / 2}
+          fill={holeColor}
+        />
+      )}
+
       {/* Main line */}
       <path className={`poe-line state-${state[0]}-${state[1]}`} d={position} />
-
-      {/* Blue line from start */}
-      {/* <path
-        d={`M ${startPoint.x} ${startPoint.y} L ${shortLineStartPoint.x} ${shortLineStartPoint.y}`}
-        stroke="blue"
-        strokeWidth="3"
-        fill="none"
-      /> */}
-
-      {/* Red line from end */}
-      {/* <path
-        d={`M ${endPoint.x} ${endPoint.y} L ${shortLineEndStartPoint.x} ${shortLineEndStartPoint.y}`}
-        stroke="red"
-        strokeWidth="3"
-        fill="none"
-      /> */}
     </svg>
   );
 };

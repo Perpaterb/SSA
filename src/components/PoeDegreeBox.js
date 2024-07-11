@@ -19,7 +19,7 @@ const PoeDegreeBox = forwardRef(({
   faculty,
   countedSubjectRefs,
   buttonText,
-  popUpText
+  popUpText,
 }, ref) => {
 
   const [state, setState] = useState(0); // 0: Off, 1: On
@@ -66,28 +66,29 @@ const PoeDegreeBox = forwardRef(({
  
   const image = getFacultyImage(faculty);
 
-  return (
-    <div
-        ref={ref}
-        className={`poe-degree-box state-${state}`}
-        style={{ top: position.y, left: position.x }}
-        onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-    >
-        {showPopup && <PopupInfo text={popUpText} />}
-        <img 
-            className="poe-degree-img"
-            src={image} 
-            alt={faculty}  
-        />
-        <svg viewBox="0 0 225 225">
-            <circle cx="112.5" cy="112.5" r="90" />
-        </svg>
-        <div className="degree-text">{buttonText}</div>
-        <div className="degree-cp-count">{cpCount}/{cpNeeded}</div>
-    </div>
-);
+    return (
+      <div
+          ref={ref}
+          className={`poe-degree-box state-${state}`}
+          style={{ top: position.y, left: position.x }}
+          onClick={handleClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+      >
+          {showPopup && <PopupInfo text={popUpText} />}
+          <img 
+              className="poe-degree-img"
+              src={image} 
+              alt={faculty}  
+          />
+          <svg viewBox="0 0 225 225">
+              <circle cx="112.5" cy="112.5" r="90" />
+          </svg>
+          <div className="degree-text">{buttonText}</div>
+          <div className="degree-cp-count">{cpCount}/{cpNeeded}</div>
+      </div>
+    
+    );
 });
 
 export default PoeDegreeBox;
